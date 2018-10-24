@@ -1,3 +1,6 @@
+// Time complexity = O(log n)
+// works only on sorted array
+
 function binarySearch(arr,val){
     let left = 0
     let right = arr.length - 1
