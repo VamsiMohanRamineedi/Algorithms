@@ -48,6 +48,17 @@ class SinglyLinkedList{
         
         return current;
     }
+
+    get(idx){
+        if(idx<0 || idx>=this.length) return undefined;
+        var current = this.head;
+        var count = 0;
+        while(count<idx){
+            current = current.next;
+            count++;
+        }
+        return current;
+    }
 }
 
 var list = new SinglyLinkedList();
