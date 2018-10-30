@@ -72,7 +72,7 @@ class SinglyLinkedList{
         this.length++;
         return this;
     }
-    
+
     get(idx){
         if(idx<0 || idx>=this.length) return null;
         var current = this.head;
@@ -89,6 +89,39 @@ class SinglyLinkedList{
         if(current_node===null) return false;
         current_node.val = val;
         return true;
+    }
+
+    insert(idx, val){
+        if(idx < 0 || idx > this.length) return false;
+        if(idx===this.length){
+            this.push(val);
+        }
+        else if(idx===0){
+            this.unshift(val);
+        }
+        else{
+        var previous_node = this.get(idx-1);
+        var moved_node = previous_node.next;
+        var new_node = new Node(val);
+        previous_node.next = new_node;
+        new_node.next = moved_node;
+        this.length++;
+        }
+        return true;
+    }
+
+    remove(idx){
+        if(idx<0 || idx>=this.length) return undefined;
+        if(idx===0) return this.shift(idx);
+        else if(idx===this.length-1) return this.pop();
+        else{
+            var previous_node = this.get(idx-1);
+            var removed_node = previous_node.next;
+            previous_node.next = removed_node.next;
+            this.length--;
+            return removed_node;
+        }
+
     }
 }
 
