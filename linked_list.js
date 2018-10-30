@@ -49,8 +49,32 @@ class SinglyLinkedList{
         return current;
     }
 
+    shift(){
+        if(!this.head) return undefined;
+        var currentHead = this.head;
+        this.head = currentHead.next;
+        this.length--;
+        if(this.length === 0){
+            this.tail = null;
+        }
+        return currentHead;
+    }
+
+    unshift(val){
+        var newNode = new Node(val);
+        if(!this.head) {
+            this.head = newNode;
+            this.tail = this.head;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length++;
+        return this;
+    }
+    
     get(idx){
-        if(idx<0 || idx>=this.length) return undefined;
+        if(idx<0 || idx>=this.length) return null;
         var current = this.head;
         var count = 0;
         while(count<idx){
@@ -59,11 +83,20 @@ class SinglyLinkedList{
         }
         return current;
     }
+
+    set(idx, val){
+        var current_node = this.get(idx)
+        if(current_node===null) return false;
+        current_node.val = val;
+        return true;
+    }
 }
 
 var list = new SinglyLinkedList();
 list.push(4)
 list.push(5)
 list.push(6)
+list.push(9)
+list.push(16)
 
 }
