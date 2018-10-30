@@ -30,9 +30,11 @@ class SinglyLinkedList{
     pop(){
         if(this.length===0) return undefined;
         if(this.length===1){
+            var head = this.head;
             this.head = null;
             this.tail = null;
             this.length--;
+            return head;
         }
         var current = this.head;
         var pre = current;
