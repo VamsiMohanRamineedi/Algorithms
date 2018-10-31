@@ -74,11 +74,40 @@ class DoublyLinkedList{
         this.length++;
         return this;
     }
+
+    get(idx){
+        if(idx<0 || idx>=this.length) return null;
+        var counter = 0;
+        var currentNode = this.head;
+        if(idx<=Math.floor(this.length/2)){
+            while(counter!==idx){
+                currentNode = currentNode.next;
+                counter++;
+            }
+        } else{
+            counter = this.length-1;
+            currentNode = this.tail;
+            while(counter!==idx){
+                currentNode = currentNode.prev;
+                counter--;
+            }
+        }
+        return currentNode;
+    }
+
+    set(idx, value){
+        var current_node = this.get(idx)
+        if(current_node===null) return false;
+        current_node.value = value;
+        return true;
+    }
 }
 
 var list = new DoublyLinkedList();
-list.push(4);
-list.push(5);
-list.push(6);
-list.push(7);
+list.push(14);
+list.push(25);
+list.push(61);
+list.push(70);
+list.push(18);
 }
+
