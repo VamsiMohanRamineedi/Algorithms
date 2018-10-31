@@ -1,0 +1,56 @@
+{
+
+class Node{
+    constructor(value){
+        this.value = value;
+        this.next = null;
+        this.prev = null;
+    }
+}
+
+class DoublyLinkedList{
+    constructor(){
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
+
+    push(value){
+        var newNode = new Node(value)
+        if (this.length===0){
+            this.head = newNode;
+            this.tail = this.head;
+        }
+        else{
+            this.tail.next = newNode;
+            newNode.prev = this.tail;
+            this.tail = newNode;
+        }
+        this.length++;
+        return this;
+    }
+
+    pop(){
+        if (this.length===0) return undefined;
+        if (this.length===1){
+            this.head = null;
+            this.tail = null;
+            this.length = 0;
+            return this;
+        }
+        var poppedNode = this.tail;
+        var newTail = this.tail.prev;
+        this.tail.prev = null;
+        this.tail = newTail;
+        newTail.next = null;
+        this.length--;
+        return this;
+    }
+}
+
+var list = new DoublyLinkedList();
+list.push(4);
+list.push(5);
+list.push(6);
+list.push(7);
+}
