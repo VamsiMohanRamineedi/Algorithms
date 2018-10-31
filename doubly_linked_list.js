@@ -45,6 +45,35 @@ class DoublyLinkedList{
         this.length--;
         return poppedNode;
     }
+
+    shift(){
+        if(this.length === 0) return undefined;
+        var oldHead = this.head;
+        if(this.length === 1){
+            this.head = null;
+            this.tail = null;
+        } else{
+            this.head = oldHead.next;
+            this.head.prev = null;
+            oldHead.next = null;
+        }
+        this.length--;
+        return oldHead;
+    }
+
+    unshift(value){
+        var newNode = new Node(value);
+        if (this.length === 0){
+            this.head = newNode;
+            this.tail = newNode;
+        } else{
+            this.head.prev = newNode;
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length++;
+        return this;
+    }
 }
 
 var list = new DoublyLinkedList();
