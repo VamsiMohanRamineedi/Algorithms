@@ -54,14 +54,30 @@ class BST{
             }         
         }
     }
+
+    bfs(){
+        var queue = [];
+        var visited = [];
+        var removed_node;
+        queue.push(this.root);
+        while(queue.length!==0){
+            removed_node = queue.shift();
+            visited.push(removed_node.value);
+            if(removed_node.left) queue.push(removed_node.left);
+            if(removed_node.right) queue.push(removed_node.right);
+        }
+        return visited;
+    }
 }
 
 var bst = new BST();
 bst.insert(7);
 bst.insert(-1);
+bst.insert(-5);
 bst.insert(19);
 bst.insert(3);
 bst.insert(71);
 bst.insert(40);
-bst.insert(21);
+bst.insert(121);
+bst.insert(14);
 }
