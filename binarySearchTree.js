@@ -68,6 +68,24 @@ class BST{
         }
         return visited;
     }
+
+    dfsPreOrder(){
+        var visited = [];
+        var currentNode = this.root;
+
+        function traverse(node){
+        visited.push(node.value);
+        if(node.left) traverse(node.left);
+        if(node.right) traverse(node.right);
+        }
+
+        traverse(currentNode);
+        return visited;
+        }
+
+    
+
+    
 }
 
 var bst = new BST();
@@ -80,4 +98,12 @@ bst.insert(71);
 bst.insert(40);
 bst.insert(121);
 bst.insert(14);
+
 }
+
+//                  7
+//              -1    19
+//            -5  3 14   71
+//                    40   121
+
+  
