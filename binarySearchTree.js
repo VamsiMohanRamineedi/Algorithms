@@ -29,7 +29,7 @@ class BST{
                 }
                 currentNode = currentNode.right;
             }
-            if(newNode.value < currentNode.value){
+            else{
                 if(!currentNode.left){
                     currentNode.left = newNode;
                     return this;
@@ -38,8 +38,30 @@ class BST{
             }
         }                        
     }
+
+    contains(value){
+        if(this.root === null) return false;
+        var currentNode = this.root;
+        while(true){
+            if(value === currentNode.value) return true
+            else if(value > currentNode.value){
+                if(!currentNode.right) return false;
+                currentNode = currentNode.right;
+            }
+            else{
+                if(!currentNode.left) return false;
+                currentNode = currentNode.left;
+            }         
+        }
+    }
 }
 
 var bst = new BST();
-
+bst.insert(7);
+bst.insert(-1);
+bst.insert(19);
+bst.insert(3);
+bst.insert(71);
+bst.insert(40);
+bst.insert(21);
 }
