@@ -1,3 +1,7 @@
+// Hash Table with Separate chaining implementation
+// Time complexity for Insertion - O(1), Deletion - O(1) and Access - O(1)
+// Worst case time complexity - O(n) when all the keys are hashed to same index.
+
 {
 class HashTable {
   constructor(size=53){
@@ -35,6 +39,34 @@ class HashTable {
       
       return undefined;
   }
+
+  keys(){
+      var keys = [];
+      for(var i=0; i<this.keyMap.length; i++){
+            if(this.keyMap[i]){
+                for(var j=0; j<this.keyMap[i].length; j++){
+                    if(!keys.includes(this.keyMap[i][j][0])){
+                        keys.push(this.keyMap[i][j][0]);
+                    }                  
+                }
+            }
+      }
+      return keys;
+  }
+
+  values(){
+      var values = [];
+      for(var i=0; i<this.keyMap.length; i++){
+            if(this.keyMap[i]){
+                for(var j=0; j<this.keyMap[i].length; j++){
+                    if(!values.includes(this.keyMap[i][j][1])){
+                        values.push(this.keyMap[i][j][1]);
+                    }                  
+                }
+            }
+      }
+      return values;
+  }
 }
 
 var ht = new HashTable(5)
@@ -42,4 +74,7 @@ ht.set('Walmart','Great Value');
 ht.set('Amazon','Electronics');
 ht.set('Best Buy','Discounts');
 ht.set('Netflix','TV shows');
+ht.set('Netflix','Movies');
+ht.set('Amazon','Movies');
+ht.set('Costco','Great Value');
 }
