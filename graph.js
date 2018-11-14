@@ -27,13 +27,41 @@ class Graph{
         delete this.adjacencyList[vertex];
         
     }
+
+    dfs_recursive(starting_vertex){
+        let results = [];
+        let visited = {};
+        const adjacencyList = this.adjacencyList;
+
+        function dfs(starting_vertex){
+            if (!starting_vertex) return null;
+            visited[starting_vertex] = true;
+            results.push(starting_vertex);
+            for(let adj_vertex of adjacencyList[starting_vertex]){
+                if(!visited[adj_vertex]) dfs(adj_vertex);
+            }           
+        }
+
+        dfs(starting_vertex);
+        return results;
+    }
 }
 
 var g = new Graph();
-g.addVertex('Hyd');
-g.addVertex('Kolkata');
-g.addVertex('Pune');
-g.addEdge('Hyd','Pune');
-g.addEdge('Pune','Kolkata');
+g.addVertex('A');
+g.addVertex('B');
+g.addVertex('C');
+g.addVertex('D');
+g.addVertex('E');
+g.addVertex('F');
+g.addEdge('A','B');
+g.addEdge('A','C');
+g.addEdge('B','D');
+g.addEdge('C','E');
+g.addEdge('D','E');
+g.addEdge('D','F');
+g.addEdge('E','F');
+//g.dfs_recursive('A');
+
 }
 
