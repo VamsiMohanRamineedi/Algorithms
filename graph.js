@@ -45,6 +45,29 @@ class Graph{
         dfs(starting_vertex);
         return results;
     }
+
+    dfs_iterative(starting_vertex){
+        let stack = [];
+        let results = [];
+        let visited_stack = {};
+        let popped_vertex;
+
+        stack.push(starting_vertex);
+        visited_stack[starting_vertex] = true;
+
+        while(stack.length){
+            popped_vertex = stack.pop()
+            results.push(popped_vertex);
+            this.adjacencyList[popped_vertex].forEach(neighbor =>{
+                if(!visited_stack[neighbor]){
+                   stack.push(neighbor);
+                   visited_stack[neighbor] = true;                    
+                }
+                });            
+        }
+
+        return results;
+    }
 }
 
 var g = new Graph();
@@ -61,7 +84,6 @@ g.addEdge('C','E');
 g.addEdge('D','E');
 g.addEdge('D','F');
 g.addEdge('E','F');
-//g.dfs_recursive('A');
 
 }
 
