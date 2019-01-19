@@ -25,3 +25,28 @@ class Solution(object):
             current_node = current_node.next
         current_node.next = l1 or l2
         return dummy_head.next
+
+
+'''
+time: O(min(m,n)), space = O(min(m,n))
+class Solution(object):
+    def mergeTwoLists(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        dummy_head = ListNode('dummy')
+        prev = dummy_head
+        while l1 and l2:
+            if l1.val <= l2.val:
+                newNode = ListNode(l1.val)
+                l1 = l1.next
+            else:
+                newNode = ListNode(l2.val)
+                l2 = l2.next
+            prev.next = newNode
+            prev = newNode
+        prev.next = l1 or l2
+        return dummy_head.next
+'''
