@@ -1,4 +1,4 @@
-# Merge two sorted linkedlists - Time: O(min(m,n)), space: O(1)
+# Merge two sorted linkedlists - Time: O(m+n), space: O(1)
 
 # Definition for singly-linked list.
 # class ListNode(object):
@@ -28,7 +28,7 @@ class Solution(object):
 
 
 '''
-time: O(min(m,n)), space = O(m+n)
+time: O(m+n), space = O(m+n)
 class Solution(object):
     def mergeTwoLists(self, l1, l2):
         """
