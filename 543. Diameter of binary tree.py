@@ -26,8 +26,7 @@ class Solution:
                 return 0
             
             depth_left = 1 + helper(node.left) if node.left else 0
-            depth_right = 1 + helper(node.right) if node.right else 0
-            
+            depth_right = 1 + helper(node.right) if node.right else 0           
             self.maxDiameter = max(self.maxDiameter, depth_left + depth_right)
             
             return max(depth_left, depth_right)
