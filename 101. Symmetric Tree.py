@@ -1,3 +1,5 @@
+# Symmetric Tree - Recursive Solution - Time: O(n), space: O(log n)
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
@@ -5,10 +7,30 @@
 #         self.left = None
 #         self.right = None
 
+class Solution:
+    def isSymmetric(self, root):
+        if not root:
+            return True
+        
+        return self.isMirror(root.left, root.right)
+    
+    def isMirror(self, left, right):
+        if not left and not right:
+            return True
+        
+        if not left or not right:
+            return False
+        
+        if left.val == right.val:
+            outerPair = self.isMirror(left.left, right.right)
+            innerPair = self.isMirror(left.right, right.left)
+            return outerPair and innerPair
+        return False
 
 
-# ------------- My initial solution ---------------
-# Iterative solution: Time: O(n), space: O(n)
+
+'''
+# Iterative - Time: O(n), space: O(n)
 class Solution:
     def isSymmetric(self, root):
         if not root:
@@ -46,3 +68,4 @@ class Solution:
             return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
         
         return False
+'''
