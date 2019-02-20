@@ -1,3 +1,23 @@
+# Climbing Stairs: Time - O(n), space: O(1) - explanation written below
+class Solution:
+    def climbStairs(self, n):
+        # we have the base cases: ways to reach level 1 = 1
+        # ways to reach level 2 = 2
+        if n == 1 or n == 2:
+            return n
+        
+        # these variables represent the number of ways to reach to that level
+        to_prev_to_current = 2 # initialized with current level assumed to be 3, so prev = level 2
+        to_prev_to_prev = 1
+        to_current = 0
+        
+        for current in range(3, n+1):
+            to_current = to_prev_to_current + to_prev_to_prev
+            to_prev_to_prev = to_prev_to_current
+            to_prev_to_current = to_current
+        return to_current
+
+'''
 # Climbing Stairs: Time - O(n), space: O(n)
 
 # Let's say your goal is level 6. Try to think the possible ways of reaching level 6.
@@ -33,7 +53,7 @@ class Solution:
                 return cache[n]
         
         return helper(n)
-
+'''
     
     
         
