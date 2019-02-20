@@ -9,7 +9,6 @@ class Solution:
         # these variables represent the number of ways to reach to that level
         to_prev_to_current = 2 # initialized with current level assumed to be 3, so prev = level 2
         to_prev_to_prev = 1
-        to_current = 0
         
         for current in range(3, n+1):
             to_current = to_prev_to_current + to_prev_to_prev
