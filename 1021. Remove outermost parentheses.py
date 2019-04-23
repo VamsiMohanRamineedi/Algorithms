@@ -1,15 +1,15 @@
 # Remove Outermost parentheses: Time and space: O(n)
 class Solution:
     def removeOuterParentheses(self, S: str) -> str:
-        open = 0
+        opened = 0
         result = ''
         
         for char in S:
-            if open > 0 and char == '(':
+            if opened > 0 and char == '(':
                 result += char
-            elif open > 1 and char == ')':
+            elif opened > 1 and char == ')':
                 result += char
-            open += 1 if char == '(' else -1
+            opened += 1 if char == '(' else -1
         return result
 
 # A bit complex solution, but same time and space complexity
@@ -31,3 +31,6 @@ class Solution:
 #             elif not primitive_stack: # skips ')'
 #                 remove = False
 #         return output      
+                
+            
+            
