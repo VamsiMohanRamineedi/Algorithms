@@ -1,6 +1,6 @@
 # Time: O(n), space: O(n)
 
-def countUniqueValues(lst):
+def returnUniqueValues(lst):
 	res = []
 	if len(lst) == 0:
 		return res
