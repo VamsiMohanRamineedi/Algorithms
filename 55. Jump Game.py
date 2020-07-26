@@ -1,3 +1,4 @@
+# Time: O(n), space: O(1)
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
         
